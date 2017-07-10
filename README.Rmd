@@ -1,0 +1,69 @@
+---
+title: "Wearable computing study case - README"
+output: 
+  html_document: 
+    keep_md: yes
+    number_sections: yes
+    toc: yes
+    toc_depth: 5
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+I will keep it simple, since I think the codebook provided is very detailed.
+
+## Contents of the repo
+### README.Rmd
+
+The text file you are reading, aimed to "explain how all of the scripts work and how they are connected".
+
+### Codebook.Rmd
+
+The complete description of:
+
+* Data: source, purpose and general description.
+* Variables: selection for the assignment, description, units and metadata.
+* Data transformation process: merge, variables selection and the tidy data dataframe (the 'FinalReport' requested).
+
+### run_analysis.R
+
+The code for the transformation of the original datasets described in section 'Data transformation' of the file 'Codebook.Rmd'.
+
+The script accomplishes the following:
+
+* **First Part** 
+
+1.Merges the training and the test sets to create one data set.
+2. Extracts only the measurements on the mean and standard deviation for each measurement.
+3. Uses descriptive activity names to name the activities in the data set
+4. Appropriately labels the data set with descriptive variable names.
+
+* **Second Part**
+
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+#### Using the code
+
+**R working directory** should be set to the folder resulting from decompressing the file in the following link:
+
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+**All outputs, including the 'FinalReport.csv' will be stored in this folder.**
+
+## Original sources
+
+### Complete description of the study
+
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+### Coursera assignment
+
+https://www.coursera.org/learn/data-cleaning/peer/FIZtT/getting-and-cleaning-data-course-project
+
+### Original study citation
+
+Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
+

@@ -1,0 +1,244 @@
+---
+title: "Wearable computing study case - Codebook"
+output: 
+  html_document: 
+    keep_md: yes
+    number_sections: yes
+    toc: yes
+    toc_depth: 5
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data
+### Data Source
+
+The dataset was the result of the *Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine* study, conducted by Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio & Luca Oneto[^1].
+
+The study gathered 30 volunteers, between 19 and 48 years old, whose physical movements were tracked during 6 activities, namely:
+
+* **Walking**
+* **Walking upstairs**
+* **Walking downstairs**
+* **Sitting**
+* **Standing**
+* **Laying**
+
+Movement signals during these activities were gathered by means of a smartphone (Samsung Galaxy S II), weared by each participant on the waist. The device used an embedded accelerometer and a gyroscope, in order to capture 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz.
+
+### Purpose of the data
+
+Authors originally split the dataset randomly: 70% of the volunteers was selected for generating the training data and 30% the test data. From this I derive that the main goal was to test the ability of the smartphone's instruments to detect the kind of physical activity performed by the user. I guess many apps for physical trainning, healt monitoring and related, exploit this information.
+
+As explained in the 'README.Rmd' file, part of the script performs precisely the merge of both train and test datasets.
+
+### Data: general description
+
+For each subject, for each activity independently considered (the experiment was recorded and the activities were labeled by an observer), two main measurements were acquired: **a.** triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration; **b.** triaxial angular velocity from the gyroscope.
+
+It is not worth entering the details related to math and physics (not my field of expertise), but further transformation and calculations allowed the researchers to integrate a vector of features for each movement pattern, composed of 17 main variables, from the time -prefix 't'- and frequency -prefix 'f' domains, in the X, Y and Z directions -prefixes '-X,Y,Z-. These main variables are:
+
+* tBodyAcc-XYZ
+* tGravityAcc-XYZ
+* tBodyAccJerk-XYZ
+* tBodyGyro-XYZ
+* tBodyGyroJerk-XYZ
+* tBodyAccMag
+* tGravityAccMag
+* tBodyAccJerkMag
+* tBodyGyroMag
+* tBodyGyroJerkMag
+* fBodyAcc-XYZ
+* fBodyAccJerk-XYZ
+* fBodyGyro-XYZ
+* fBodyAccMag
+* fBodyAccJerkMag
+* fBodyGyroMag
+* fBodyGyroJerkMag
+
+From these signals, 17 indicators were estimated:
+
+* mean(): Mean value
+* std(): Standard deviation
+* mad(): Median absolute deviation 
+* max(): Largest value in array
+* min(): Smallest value in array
+* sma(): Signal magnitude area
+* energy(): Energy measure. Sum of the squares divided by the number of values. 
+* iqr(): Interquartile range 
+* entropy(): Signal entropy
+* arCoeff(): Autorregresion coefficients with Burg order equal to 4
+* correlation(): correlation coefficient between two signals
+* maxInds(): index of the frequency component with largest magnitude
+* meanFreq(): Weighted average of the frequency components to obtain a mean * frequency
+* skewness(): skewness of the frequency domain signal 
+* kurtosis(): kurtosis of the frequency domain signal 
+* bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+* angle(): Angle between to vectors.
+
+Alongside with average measurements for the 'angle' variables:
+
+* gravityMean
+* tBodyAccMean
+* tBodyAccJerkMean
+* tBodyGyroMean
+* tBodyGyroJerkMean
+
+**Resulting in an original dataset of 516 variables for each subject, for each activity.**
+
+## Variables
+### Variables selected
+
+Despite the extension of the original dataset, the assignment required us to retain only variables related to the mean and standard deviation of measurements, resulting in the selection of 66 variables.
+
+### Variables description
+
+**Important note**: Intentionally, I kept the original acronyms in the variable names, for instance, 'Acc' instead of 'Acceleration'. I did not modify this to closely conform to the tidy data rule of "human readable variable names", because in this case, that would have as result very long variables names. Also, against the rule proposed in the last lessons, I kept the dots in the names, because I consider that they make the labels more easier to read. I hope this decisions do not lead to a deduction.
+
+#### Triaxial body acceleration mean and standard deviation (time domain)
+
+* tBodyAcc.mean...X
+* tBodyAcc.mean...Y
+* tBodyAcc.mean...Z
+* tBodyAcc.std...X
+* tBodyAcc.std...Y
+* tBodyAcc.std...Z
+
+#### Triaxial gravitational acceleration mean and standard deviation (time domain)
+
+* tGravityAcc.mean...X
+* tGravityAcc.mean...Y
+* tGravityAcc.mean...Z
+* tGravityAcc.std...X
+* tGravityAcc.std...Y
+* tGravityAcc.std...Z
+
+#### Triaxial body linear acceleration mean and standard deviation (time domain)
+
+* tBodyAccJerk.mean...X
+* tBodyAccJerk.mean...Y
+* tBodyAccJerk.mean...Z
+* tBodyAccJerk.std...X
+* tBodyAccJerk.std...Y
+* tBodyAccJerk.std...Z
+* tBodyGyro.mean...X
+* tBodyGyro.mean...Y
+* tBodyGyro.mean...Z
+* tBodyGyro.std...X
+* tBodyGyro.std...Y
+* tBodyGyro.std...Z
+
+#### Triaxial body angular velocity mean and standard deviation (time domain)
+
+* tBodyGyroJerk.mean...X
+* tBodyGyroJerk.mean...Y
+* tBodyGyroJerk.mean...Z
+* tBodyGyroJerk.std...X
+* tBodyGyroJerk.std...Y
+* tBodyGyroJerk.std...Z
+
+#### Magnitude of three-dimensional signals calculated using the Euclidean norm; mean and standard deviation (time domain) 
+
+* tBodyAccMag.mean..
+* tBodyAccMag.std..
+* tGravityAccMag.mean..
+* tGravityAccMag.std..
+* tBodyAccJerkMag.mean..
+* tBodyAccJerkMag.std..
+* tBodyGyroMag.mean..
+* tBodyGyroMag.std..
+* tBodyGyroJerkMag.mean..
+* tBodyGyroJerkMag.std..
+
+#### Fast Fourier Transform (FFT) applied to some of the above mentioned signals, producing frequency domain indicators (triaxial; mean and standard deviation)
+
+* fBodyAcc.mean...X
+* fBodyAcc.mean...Y
+* fBodyAcc.mean...Z
+* fBodyAcc.std...X
+* fBodyAcc.std...Y
+* fBodyAcc.std...Z
+* fBodyAccJerk.mean...X
+* fBodyAccJerk.mean...Y
+* fBodyAccJerk.mean...Z
+* fBodyAccJerk.std...X
+* fBodyAccJerk.std...Y
+* fBodyAccJerk.std...Z
+* fBodyGyro.mean...X
+* fBodyGyro.mean...Y
+* fBodyGyro.mean...Z
+* fBodyGyro.std...X
+* fBodyGyro.std...Y
+* fBodyGyro.std...Z
+* fBodyAccMag.mean..
+* fBodyAccMag.std..
+* fBodyBodyAccJerkMag.mean..
+* fBodyBodyAccJerkMag.std..
+* fBodyBodyGyroMag.mean..
+* fBodyBodyGyroMag.std..
+* fBodyBodyGyroJerkMag.mean..
+* fBodyBodyGyroJerkMag.std..
+
+### Units of the variables
+
+All features were normalized and consequently are bounded within [-1,1].
+
+### Metadata
+
+Two variables are included for summarizing and reports creation purposes:
+
+* Activity: factor with 6 levels:
+
+        - Walking
+        - Walking upstairs
+        - Walking downstairs
+        - Sitting
+        - Standing
+        - Laying
+
+* Subject.ID: unique code of each participant (therefore from 1 to 30).
+
+## Data transformation
+### Merge
+
+The 'First Part' of the script submitted performs the merging of the train and test datasets.
+
+The critical route to accomplish the merge was (this is not exactly the order the script follows, but resembles the pseudo-code designed; the script itself includes comments that should allow an easy interpretation):
+
+1. Load the activities labels (activity_labels.txt)
+2. Load the variables names (features.text)
+3. Load the subjects IDs (subject_***.text)
+4. Load the activities codes (y_***.txt)
+5. Load the actual observations (x_***.txt) -> Observations dataframe
+6. Replace the codes in y_***.txt with the labels in activity_labels.txt 
+7. Make the the names in features.txt the variables names in the observations dataframe
+8. Bind the modified vector y_**.text to the observations dataframe ('Activity' variable)
+9. Bind the subjects IDs vector to the observations dataframe ('Subject.ID' variable)
+
+* This procedure is independently conducted for both the train and test datasets; therefore, in the steps above '***' = train/test. Once variables in both dataset are identical:
+
+10. Merge the train and test datasets by rows
+
+### Variables selection
+
+The 'First Part' of the code submitted also selects the variables requested, related to the mean and standard deviation of the original measurements, the pseudo-code being:
+
+1. Edit variables names to conform to minimum standards
+2. Search for variables related to mean and standard deviation using 'grep'
+3. Select the matching variables + 'Activity' + 'Subject.ID'
+
+### Report
+
+The 'Second Part' of the script summarizes the data, reporting the mean of each of the variables retained, for each activity of each of the participants in the experiments ('FinalReport.csv').
+
+These report consists of:
+
+* Subjec.ID: identifier of each of the participants (1 to 30)
+* Activity: label of the physical activities measured
+* Variable: names of the measurements selected
+* Mean: the mean of the specific variable, for every activity of each of the participants
+
+
+[^1]: Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
