@@ -231,7 +231,7 @@ The 'First Part' of the code submitted also selects the variables requested, rel
 
 ### Report
 
-The 'Second Part' of the script summarizes the data, reporting the mean of each of the variables retained, for each activity of each of the participants in the experiments ('FinalReport.csv').
+The 'Second Part' of the script summarizes the data, reporting the mean of each of the variables retained, for each activity of each of the participants in the experiments ('FinalReport.txt').
 
 These report consists of:
 
