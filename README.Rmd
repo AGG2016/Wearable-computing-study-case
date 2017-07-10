@@ -51,7 +51,7 @@ The script accomplishes the following:
 
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-**All outputs, including the 'FinalReport.csv' will be stored in this folder.**
+**All outputs, including the 'FinalReport.txt' will be stored in this folder.**
 
 ## Original sources
 
