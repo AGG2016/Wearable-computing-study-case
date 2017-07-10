@@ -120,3 +120,6 @@ report <- df2 %>%
 #every activity
 
 write.csv(report,"FinalReport.csv")
+write.table(report,"FinalReport.txt",row.names = F)#The format requested by
+#the assignment
+
